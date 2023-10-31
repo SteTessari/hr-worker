@@ -39,4 +39,11 @@ public class WorkerService {
 
         return workersPage.map(workerMapper::toDTO);
     }
+
+    public WorkerDTO buscarPorId(Long idWorker){
+        Worker worker = workerRepository.findById(idWorker)
+                .orElseThrow(() -> new HrWorkerException(HttpStatus.NOT_FOUND, "No workers found"));
+
+        return workerMapper.toDTO(worker);
+    }
 }

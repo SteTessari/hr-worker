@@ -27,4 +27,8 @@ public class WorkerController {
     public ResponseEntity<Page<WorkerDTO>> buscarTodos(@PageableDefault Pageable pageable){
         return ResponseEntity.status(HttpStatus.OK).body(workerService.buscarTodos(pageable));
     }
+    @GetMapping("/{idWorker}")
+    public ResponseEntity<WorkerDTO> buscarPorId(@PathVariable Long idWorker){
+        return ResponseEntity.status(HttpStatus.OK).body(workerService.buscarPorId(idWorker));
+    }
 }
